@@ -1,5 +1,8 @@
 x=[2*randn(1,100)-5 randn(1,50); randn(1,100) randn(1,50)+3];
-[d,n]=size(x); m=5; e=rand(n,m); S=zeros(d,d,m);
+[d,n]=size(x); %150个样本 2个特征
+m=5; %使用5个高斯
+e=rand(n,m); %初始化后验
+S=zeros(d,d,m); % 初始化方差
 for o=1:10000
   e=e./repmat(sum(e,2),[1 m]); g=sum(e); w=g/n;
   mu=(x*e)./repmat(g,[d 1]); 
